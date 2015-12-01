@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="FindPlayPartner">
+    <wb-module deploy-name="Friends">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="FindPlayPartner"/>
-        <property name="java-output-path" value="/FindPlayPartner/build/classes"/>
+        <property name="context-root" value="Friends"/>
+        <property name="java-output-path" value="/Friends/build/classes"/>
     </wb-module>
 </project-modules>
