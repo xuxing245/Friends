@@ -13,7 +13,7 @@ public class Activity extends BaseBean {
 	
 	private int age;
 	
-	private String address;
+	private Address address;
 	
 	private User creater;
 	
@@ -35,11 +35,11 @@ public class Activity extends BaseBean {
 		this.age = age;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

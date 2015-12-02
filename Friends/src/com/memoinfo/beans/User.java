@@ -20,7 +20,7 @@ public class User extends BaseBean {
 	 */
 	private int gender;
 	
-	private String address;
+	private Address address;
 	
 	private String phone;
 	
@@ -77,11 +77,11 @@ public class User extends BaseBean {
 		this.gender = gender;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

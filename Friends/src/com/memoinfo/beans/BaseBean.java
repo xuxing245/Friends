@@ -3,6 +3,7 @@ package com.memoinfo.beans;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@SuppressWarnings("serial")
 public class BaseBean implements Serializable {
 
 	private String id;

@@ -28,12 +28,19 @@
 	<!-- activates annotation driven binding -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 
+	<mvc:interceptors>
+	    <bean class="com.memoinfo.interceptor.LoginInterceptor"></bean>
+	</mvc:interceptors>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<bean id="jdbc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >  
+    <property name="locations" value="/WEB-INF/config/jdbc.properties"/>      
+   </bean>
 
 	<!-- 定义数据源Bean -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -44,7 +51,7 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	<!-- 下面定义了DbUtils的一个模板操作Bean -->
-	<bean id="dbUtilsTemplate" class="com.company.project.dao.template.DbUtilsTemplate">
+	<bean id="dbUtilsTemplate" class="com.memoinfo.dao.DbUtilsTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
