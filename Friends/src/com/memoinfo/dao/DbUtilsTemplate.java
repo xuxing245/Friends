@@ -125,7 +125,6 @@ public class DbUtilsTemplate {
      * @param params 参数数组 
      * @return 查询结果 
      */ 
-    @SuppressWarnings("unchecked") 
     public List<Map<String, Object>> find(String sql, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
         List<Map<String, Object>> list = new ArrayList<Map<String,Object>>(); 
@@ -254,7 +253,6 @@ public class DbUtilsTemplate {
      * @param params 参数数组 
      * @return 封装为Map的对象 
      */ 
-    @SuppressWarnings("unchecked") 
     public Map<String, Object> findFirst(String sql, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
         Map<String, Object> map = null; 

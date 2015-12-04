@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	
 	@RequestMapping(value="/")
+	public String main() {
+		
+		return "redirect:/home";
+	}
+	
+	@RequestMapping(value="/home")
 	public String home(HttpServletRequest request) {
 		String bind = request.getParameter("bind");
 		if (StringUtils.isNotEmpty(bind)) {

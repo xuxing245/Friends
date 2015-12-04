@@ -28,8 +28,16 @@
 	<!-- activates annotation driven binding -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 
+	<!-- Interceptors -->
 	<mvc:interceptors>
-	    <bean class="com.memoinfo.interceptor.LoginInterceptor"></bean>
+    	<bean class="com.memoinfo.interceptor.LoginInterceptor">
+    		<property name="excludePathList">
+    			<list>
+    				<value>/bindUser/show</value>
+    				<value>/bindUser/bind</value>
+    			</list>
+    		</property>
+    	</bean>
 	</mvc:interceptors>
 
 	<bean id="viewResolver"
