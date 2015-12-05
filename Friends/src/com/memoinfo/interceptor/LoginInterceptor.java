@@ -39,11 +39,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 		}
 		
 		if (request.getSession().getAttribute(Constants.SESSION_USER) != null) {
-			User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
+			//User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
 			
 			return true;
 		} else {
-			response.sendRedirect("/bindUser/show");
+			response.sendRedirect("/login/show");
 		}
 		return false;
 	}

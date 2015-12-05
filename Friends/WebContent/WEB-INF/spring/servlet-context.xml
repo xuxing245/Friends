@@ -33,8 +33,10 @@
     	<bean class="com.memoinfo.interceptor.LoginInterceptor">
     		<property name="excludePathList">
     			<list>
-    				<value>/bindUser/show</value>
-    				<value>/bindUser/bind</value>
+    			    <value>/login</value>
+    			    <value>/login/show</value>
+    				<value>/login/bindUser/show</value>
+    				<value>/login/bindUser/bind</value>
     			</list>
     		</property>
     	</bean>

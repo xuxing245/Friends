@@ -1,21 +1,23 @@
 package com.memoinfo.dao; 
 
-import java.sql.SQLException; 
-import java.util.ArrayList; 
-import java.util.List; 
-import java.util.Map; 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import javax.sql.DataSource; 
+import javax.sql.DataSource;
 
-import org.apache.commons.dbcp.BasicDataSource; 
-import org.apache.commons.dbutils.QueryRunner; 
-import org.apache.commons.dbutils.handlers.BeanHandler; 
-import org.apache.commons.dbutils.handlers.BeanListHandler; 
-import org.apache.commons.dbutils.handlers.MapHandler; 
-import org.apache.commons.dbutils.handlers.MapListHandler; 
-import org.apache.commons.dbutils.handlers.ScalarHandler; 
-import org.apache.commons.logging.Log; 
-import org.apache.commons.logging.LogFactory; 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /** 
 * 调用Apache Commons DBUtil组件的数据库操作类 
@@ -27,11 +29,11 @@ import org.apache.commons.logging.LogFactory;
 *     this.dbUtilsTemplate = dbUtilsTemplate; 
 * } 
 * </code> 
-* @author Sunshine 
-* @version 1.0 2009-07-29 
 */ 
+@Service
 public class DbUtilsTemplate { 
 
+	@Autowired
     private DataSource dataSource; 
     private QueryRunner queryRunner; 
     private static final Log LOG = LogFactory.getLog(DbUtilsTemplate.class); 
@@ -223,6 +225,7 @@ public class DbUtilsTemplate {
                 object = queryRunner.query(sql, new BeanHandler(entityClass), params); 
             } 
         } catch (SQLException e) { 
+        	e.printStackTrace();
             LOG.error("Error occured while attempting to query data", e); 
         } 
         return (T) object; 

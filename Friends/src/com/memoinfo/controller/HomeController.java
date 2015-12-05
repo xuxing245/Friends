@@ -22,6 +22,9 @@ public class HomeController {
 			request.setAttribute("bindSuccess", true);
 		}
 		
+		if (StringUtils.isNoneEmpty(request.getParameterValues("login"))) {
+			request.setAttribute("loginSuccess", true);
+		}
 		
 		return "home";
 	}

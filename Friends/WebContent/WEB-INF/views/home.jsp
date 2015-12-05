@@ -15,5 +15,9 @@ home page
 	<h3>绑定成功</h3>
 </c:if>
 
+<c:if test="${loginSuccess }">
+	<h3>登录成功</h3>
+</c:if>
+
 </body>
 </html>
