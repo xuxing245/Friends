@@ -7,8 +7,6 @@ public class UserInfo extends BaseBean {
 	 */
 	private static final long serialVersionUID = 8650589125733623368L;
 	
-	private User owner;
-
 	private String nickName;
 	
 	private int age;
@@ -30,14 +28,8 @@ public class UserInfo extends BaseBean {
 	 * 信誉分
 	 */
 	private int score;
-
-	public User getOwner() {
-		return owner;
-	}
-
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
+	
+	private String headerImage;
 
 	public String getNickName() {
 		return nickName;
@@ -101,6 +93,14 @@ public class UserInfo extends BaseBean {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public String getHeaderImage() {
+		return headerImage;
+	}
+
+	public void setHeaderImage(String headerImage) {
+		this.headerImage = headerImage;
 	}
 	
 	

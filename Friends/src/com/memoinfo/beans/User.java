@@ -11,6 +11,8 @@ public class User extends BaseBean {
 	
 	private String pwd;
 	
+	private UserInfo detail;
+	
 	private int status;
 	
 	private String openId;
@@ -29,6 +31,14 @@ public class User extends BaseBean {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public UserInfo getDetail() {
+		return detail;
+	}
+
+	public void setDetail(UserInfo detail) {
+		this.detail = detail;
 	}
 
 	public int getStatus() {

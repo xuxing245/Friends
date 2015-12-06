@@ -14,6 +14,8 @@ public class Address extends BaseBean {
 	private Double latitude;
 	
 	private Double longtitude;
+	
+	private Double distance;
 
 	public String getName() {
 		return name;
@@ -45,6 +47,14 @@ public class Address extends BaseBean {
 
 	public void setLongtitude(Double longtitude) {
 		this.longtitude = longtitude;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 	
 	

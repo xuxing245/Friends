@@ -11,8 +11,6 @@ public class Activity extends BaseBean {
 	
 	private Timestamp startTime;
 	
-	private int age;
-	
 	private Address address;
 	
 	private User creater;
@@ -25,14 +23,6 @@ public class Activity extends BaseBean {
 
 	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public Address getAddress() {
