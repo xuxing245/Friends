@@ -30,14 +30,18 @@ public class UserDaoImpl implements CommonDao<User> {
 	
 	@Override
 	public int add(User user) {
+		user.setId(UUID.randomUUID().toString());
+		user.setCreateDate(new Timestamp(System.currentTimeMillis()));
+		
 		Object[] params = new Object[6];
-		params[0] = UUID.randomUUID().toString();
+		params[0] = user.getId();
 		params[1] = user.getName();
 		params[2] = user.getPwd();
 		params[3] = Constants.USER_STATUS_VALID;
 		params[4] = "";
-		params[5] = new Timestamp(System.currentTimeMillis());
-		return dbUtilsTemplate.update(SQL_USER_ADD, params);
+		params[5] = user.getCreateDate();
+		int n = dbUtilsTemplate.update(SQL_USER_ADD, params);
+		return n;
 	}
 
 	@Override

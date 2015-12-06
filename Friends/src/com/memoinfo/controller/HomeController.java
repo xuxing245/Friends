@@ -26,6 +26,10 @@ public class HomeController {
 			request.setAttribute("loginSuccess", true);
 		}
 		
+		if (StringUtils.isNoneEmpty(request.getParameterValues("register"))) {
+			request.setAttribute("registerSuccess", true);
+		}
+		
 		return "home";
 	}
 

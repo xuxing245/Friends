@@ -17,6 +17,14 @@ home page
 
 <c:if test="${loginSuccess }">
 	<h3>登录成功</h3>
+	用户名:${SESSION_USER.name }
+	<a href="/login/logout">注销</a>
+</c:if>
+
+<c:if test="${registerSuccess }">
+	<h3>登录成功</h3>
+	用户名:${SESSION_USER.name }
+	<a href="/login/logout">注销</a>
 </c:if>
 
 </body>

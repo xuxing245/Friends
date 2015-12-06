@@ -35,6 +35,8 @@
     			<list>
     			    <value>/login</value>
     			    <value>/login/show</value>
+    			    <value>/login/register</value>
+    			    <value>/login/register/show</value>
     				<value>/login/bindUser/show</value>
     				<value>/login/bindUser/bind</value>
     			</list>

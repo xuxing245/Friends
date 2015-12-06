@@ -34,6 +34,23 @@ public class LoginController {
 		
 		return "login";
 	}
+	
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public String register(HttpServletRequest request, UserForm userForm) {
+		User user = loginService.register(userForm);
+		if (user != null) {
+			request.getSession().setAttribute(Constants.SESSION_USER, user);
+			return "redirect:/home?register=success";
+		} else {
+			return "redirect:/login/register/show";
+		}
+	}
+	
+	@RequestMapping(value="/register/show")
+	public String showRegister() {
+		
+		return "register";
+	}
 
 	@RequestMapping(value="/bindUser/show", method=RequestMethod.GET)
 	public String showBindUser(HttpServletRequest request){
@@ -47,5 +64,12 @@ public class LoginController {
 		user.setName("Temp");
 		request.getSession().setAttribute(Constants.SESSION_USER, user);
 		return "redirect:/home?bind=success";
+	}
+	
+	@RequestMapping(value="/logout")
+	public String logout(HttpServletRequest request) {
+		request.getSession().removeAttribute(Constants.SESSION_USER);
+		request.getSession().invalidate();
+		return "redirect:/login/show";
 	}
 }

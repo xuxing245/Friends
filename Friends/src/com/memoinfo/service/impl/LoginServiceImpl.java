@@ -21,4 +21,17 @@ public class LoginServiceImpl implements LoginService {
 		return userDao.find(request);
 	}
 
+	@Override
+	public User register(UserForm userForm) {
+		User request = new User();
+		request.setName(userForm.getUsername());
+		request.setPwd(userForm.getPassword());
+		int n = userDao.add(request);
+		if (n>0) {
+			return request;
+		} else {
+			return null;
+		}
+	}
+
 }
