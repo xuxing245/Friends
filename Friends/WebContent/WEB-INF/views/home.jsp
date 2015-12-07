@@ -27,5 +27,9 @@ home page
 	<a href="/login/logout">注销</a>
 </c:if>
 
+<a href="/friend/list">朋友列表</a>
+<a href="/activity/list">活动列表</a>
+<a href="#">消息列表</a>
+<a href="#">个人中心</a>
 </body>
 </html>

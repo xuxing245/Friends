@@ -13,7 +13,7 @@ public class User extends BaseBean {
 	
 	private UserInfo detail;
 	
-	private int status;
+	private Integer status;
 	
 	private String openId;
 

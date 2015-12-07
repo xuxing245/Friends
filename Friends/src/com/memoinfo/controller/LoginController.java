@@ -32,7 +32,7 @@ public class LoginController {
 	@RequestMapping(value="/show")
 	public String showLogin(){
 		
-		return "login";
+		return "login/login";
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
@@ -49,13 +49,13 @@ public class LoginController {
 	@RequestMapping(value="/register/show")
 	public String showRegister() {
 		
-		return "register";
+		return "login/register";
 	}
 
 	@RequestMapping(value="/bindUser/show", method=RequestMethod.GET)
 	public String showBindUser(HttpServletRequest request){
 		
-		return "bindUser";
+		return "login/bindUser";
 	}
 	
 	@RequestMapping(value="/bindUser/bind")

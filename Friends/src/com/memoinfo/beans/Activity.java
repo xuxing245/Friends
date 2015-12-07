@@ -9,13 +9,23 @@ public class Activity extends BaseBean {
 	 */
 	private static final long serialVersionUID = 3819500260232943830L;
 	
+	private String title;
+	
 	private Timestamp startTime;
 	
 	private Address address;
 	
 	private User creater;
 	
-	private int status;
+	private Integer status;
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public Timestamp getStartTime() {
 		return startTime;
