@@ -30,18 +30,19 @@
 
 	<!-- Interceptors -->
 	<mvc:interceptors>
-    	<bean class="com.memoinfo.interceptor.LoginInterceptor">
-    		<property name="excludePathList">
-    			<list>
-    			    <value>/login</value>
-    			    <value>/login/show</value>
-    			    <value>/login/register</value>
-    			    <value>/login/register/show</value>
-    				<value>/login/bindUser/show</value>
-    				<value>/login/bindUser/bind</value>
-    			</list>
-    		</property>
-    	</bean>
+		<bean class="com.memoinfo.interceptor.LoginInterceptor">
+			<property name="excludePathList">
+				<list>
+					<value>/login</value>
+					<value>/login/show</value>
+					<value>/login/register</value>
+					<value>/login/register/show</value>
+					<value>/login/bindUser/show</value>
+					<value>/login/bindUser/bind</value>
+				</list>
+			</property>
+			<property name="wexinAPI" ref="weixinAPI"></property>
+		</bean>
 	</mvc:interceptors>
 
 	<bean id="viewResolver"
@@ -50,9 +51,14 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean id="jdbc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >  
-    <property name="locations" value="/WEB-INF/config/jdbc.properties"/>      
-   </bean>
+	<bean id="config" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/config/api.properties</value>
+				<value>/WEB-INF/config/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
 
 	<!-- 定义数据源Bean -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -62,9 +68,12 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	
 	<!-- 下面定义了DbUtils的一个模板操作Bean -->
 	<bean id="dbUtilsTemplate" class="com.memoinfo.dao.DbUtilsTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<!-- 微信API -->
+	<bean id="weixinAPI" class="com.memoinfo.common.WeixinAPI"></bean>
 </beans>

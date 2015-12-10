@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.memoinfo.beans.User;
 import com.memoinfo.common.Constants;
+import com.memoinfo.common.WeixinAPI;
 
 public class LoginInterceptor implements HandlerInterceptor {
 	
 	private List<String> excludePathList;
+	
+	private WeixinAPI wexinAPI;
 
 	@Override
 	public void afterCompletion(HttpServletRequest arg0,
@@ -43,6 +45,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			
 			return true;
 		} else {
+			//response.sendRedirect(wexinAPI.getUrlAccessCode());
 			response.sendRedirect("/login/show");
 		}
 		return false;
@@ -56,6 +59,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 		this.excludePathList = excludePathList;
 	}
 
-	
+	public WeixinAPI getWexinAPI() {
+		return wexinAPI;
+	}
+
+	public void setWexinAPI(WeixinAPI wexinAPI) {
+		this.wexinAPI = wexinAPI;
+	}
 
 }

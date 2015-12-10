@@ -11,13 +11,21 @@ public class Activity extends BaseBean {
 	
 	private String title;
 	
-	private Timestamp startTime;
+	private String description;
 	
-	private Address address;
+	private Timestamp startTime;
 	
 	private User creater;
 	
 	private Integer status;
+	
+	private String addressName;
+	
+	private Double latitude;
+	
+	private Double longtitude;
+	
+	private Double distance;
 	
 	public String getTitle() {
 		return title;
@@ -27,20 +35,20 @@ public class Activity extends BaseBean {
 		this.title = title;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Timestamp getStartTime() {
 		return startTime;
 	}
 
 	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	public User getCreater() {
@@ -56,6 +64,42 @@ public class Activity extends BaseBean {
 	}
 
 	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getAddressName() {
+		return addressName;
+	}
+
+	public void setAddressName(String addressName) {
+		this.addressName = addressName;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongtitude() {
+		return longtitude;
+	}
+
+	public void setLongtitude(Double longtitude) {
+		this.longtitude = longtitude;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	

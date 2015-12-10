@@ -10,6 +10,11 @@ public class UserActivity extends BaseBean {
 	private User user;
 	
 	private Activity activity;
+	
+	/**
+	 * 0:invalid, 1:valid
+	 */
+	private int status;
 
 	public User getUser() {
 		return user;
@@ -26,6 +31,13 @@ public class UserActivity extends BaseBean {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 	}
-	
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	
 }

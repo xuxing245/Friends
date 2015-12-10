@@ -5,6 +5,8 @@ public class UserForm {
 	private String username;
 	
 	private String password;
+	
+	private String openId;
 
 	public String getUsername() {
 		return username;
@@ -20,6 +22,14 @@ public class UserForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
 }

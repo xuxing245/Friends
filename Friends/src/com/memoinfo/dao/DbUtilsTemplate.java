@@ -14,8 +14,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,7 @@ public class DbUtilsTemplate {
 	@Autowired
     private DataSource dataSource; 
     private QueryRunner queryRunner; 
-    private static final Log LOG = LogFactory.getLog(DbUtilsTemplate.class); 
+    private static final Logger LOG = Logger.getLogger(DbUtilsTemplate.class); 
 
     public void setDataSource(BasicDataSource dataSource) { 
         this.dataSource = dataSource; 

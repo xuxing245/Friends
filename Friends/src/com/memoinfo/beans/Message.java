@@ -11,6 +11,9 @@ public class Message extends BaseBean {
 	
 	private User receiver;
 	
+	/**
+	 * 0:user message, 1:system message
+	 */
 	private Integer type;
 	
 	private String content;

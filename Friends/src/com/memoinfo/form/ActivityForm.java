@@ -1,14 +1,18 @@
 package com.memoinfo.form;
 
-import com.memoinfo.beans.Address;
-
 public class ActivityForm {
 	
 	private String title;
 	
 	private String startTime;
 	
-	private Address address;
+	private String addressName;
+	
+	private Double latitude;
+	
+	private Double longtitude;
+	
+	private Double distance;
 
 	public String getTitle() {
 		return title;
@@ -26,12 +30,36 @@ public class ActivityForm {
 		this.startTime = startTime;
 	}
 
-	public Address getAddress() {
-		return address;
+	public String getAddressName() {
+		return addressName;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddressName(String addressName) {
+		this.addressName = addressName;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongtitude() {
+		return longtitude;
+	}
+
+	public void setLongtitude(Double longtitude) {
+		this.longtitude = longtitude;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 
 }
