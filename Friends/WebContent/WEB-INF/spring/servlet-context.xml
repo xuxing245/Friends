@@ -39,6 +39,7 @@
 					<value>/login/register/show</value>
 					<value>/login/bindUser/show</value>
 					<value>/login/bindUser/bind</value>
+					<value>/weixin/valid</value>
 				</list>
 			</property>
 			<property name="wexinAPI" ref="weixinAPI"></property>

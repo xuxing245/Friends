@@ -14,6 +14,9 @@ public class WeixinAPI {
 	@Value("${weixin.authorize.redirect}")
 	private String authorizeRedirectUrl;
 	
+	@Value("${weixin.token}")
+	private String token;
+	
 	private String urlAccessCode;
 	
 	private String urlAccessToken;
@@ -42,6 +45,14 @@ public class WeixinAPI {
 
 	public void setAuthorizeRedirectUrl(String authorizeRedirectUrl) {
 		this.authorizeRedirectUrl = authorizeRedirectUrl;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	@SuppressWarnings("deprecation")
