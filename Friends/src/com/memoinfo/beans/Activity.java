@@ -17,6 +17,10 @@ public class Activity extends BaseBean {
 	
 	private User creater;
 	
+	/**
+	 * 1: valid
+	 * 0: invaid
+	 */
 	private Integer status;
 	
 	private String addressName;

@@ -18,7 +18,7 @@ public class UserDaoImpl implements CommonDao<User> {
 	@Autowired
 	private DbUtilsTemplate dbUtilsTemplate;
 	
-	private static final String SQL_USER_FINDFIRST = "select * from user where name=? and pwd=? and status=?";
+	private static final String SQL_USER_FINDFIRST = "select * from user where name=? and status=?";
 	private static final String SQL_USER_FINDOPENID = "select * from user where openId=?";
 	private static final String SQL_USER_ADD = "insert into user(id, name, pwd, status, openId, createDate) "
 																		+"values(?,?,?,?,?,?)";
@@ -31,10 +31,9 @@ public class UserDaoImpl implements CommonDao<User> {
 			params[1] = Constants.USER_STATUS_VALID;
 			return dbUtilsTemplate.findFirst(User.class, SQL_USER_FINDOPENID, params);
 		} else {
-			Object[] params = new Object[3];
+			Object[] params = new Object[2];
 			params[0] = user.getName();
-			params[1] = user.getPwd();
-			params[2] = Constants.USER_STATUS_VALID;
+			params[1] = Constants.USER_STATUS_VALID;
 			return dbUtilsTemplate.findFirst(User.class, SQL_USER_FINDFIRST, params);
 		}
 		
@@ -42,11 +41,14 @@ public class UserDaoImpl implements CommonDao<User> {
 	
 	@Override
 	public int add(User user) {
+		user.setId(UUID.randomUUID().toString());
+		user.setStatus(Constants.USER_STATUS_VALID);
+		
 		Object[] params = new Object[6];
-		params[0] = UUID.randomUUID().toString();
+		params[0] = user.getId();
 		params[1] = user.getName();
 		params[2] = user.getPwd();
-		params[3] = Constants.USER_STATUS_VALID;
+		params[3] = user.getStatus();
 		params[4] = user.getOpenId();
 		params[5] = new Timestamp(System.currentTimeMillis());
 		int n = dbUtilsTemplate.update(SQL_USER_ADD, params);

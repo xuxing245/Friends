@@ -45,8 +45,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 			
 			return true;
 		} else {
-			response.sendRedirect(wexinAPI.getUrlAccessCode());
-			//response.sendRedirect("/login/show");
+			//response.sendRedirect(wexinAPI.getUrlAccessCode());
+			response.sendRedirect("/login/show");
 		}
 		return false;
 	}

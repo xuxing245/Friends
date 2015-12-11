@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ActivityController {
 
 	@RequestMapping(value="/list")
-	public String list() {
+	public String list(HttpServletRequest request) {
 		
 		return "activityList";
 	}
 	
-	@RequestMapping(value="/view")
-	public String detail() {
+	@RequestMapping(value="/detail")
+	public String detail(HttpServletRequest request) {
 		
 		return "viewActivity";
 	}
@@ -32,14 +32,14 @@ public class ActivityController {
 	public String save() {
 		
 		String id = "";
-		return "redirect:viewActivity?id=" + id;
+		return "redirect:/activity/detail?id=" + id;
 	}
 	
 	@RequestMapping(value="/cancel")
 	public String cancel(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		
-		return "redirect:viewActivity?id=" + id;
+		return "redirect:/activity/detail?id=" + id;
 	}
 	
 	@RequestMapping(value="/join")

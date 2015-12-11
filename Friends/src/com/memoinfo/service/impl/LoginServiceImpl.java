@@ -1,5 +1,7 @@
 package com.memoinfo.service.impl;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,17 +20,27 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public User getUserForLogin(UserForm userForm) {
 		User request = new User();
-		request.setName(userForm.getUsername());
-		request.setPwd(userForm.getPassword());
-		return userDao.find(request);
+		if (StringUtils.isNotEmpty(userForm.getOpenId())) {
+			request.setOpenId(userForm.getOpenId());
+			return userDao.find(request);
+		} else {
+			request.setName(userForm.getUsername());
+			User user = userDao.find(request);
+			String requestPWD = DigestUtils.md5Hex(userForm.getPassword());
+			String userPWD = user.getPwd();
+			if (requestPWD.equals(userPWD)) {
+				return user;
+			} else {
+				return null;
+			}
+		}
 	}
 
 	@Override
 	public User register(UserForm userForm) {
 		User request = new User();
 		request.setName(userForm.getUsername());
-		request.setPwd(userForm.getPassword());
-		request.setOpenId(userForm.getOpenId());
+		request.setPwd(DigestUtils.md5Hex(userForm.getPassword()));
 		int n = userDao.add(request);
 		if (n>0) {
 			return request;
