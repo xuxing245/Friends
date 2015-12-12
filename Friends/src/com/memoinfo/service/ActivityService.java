@@ -9,7 +9,7 @@ public interface ActivityService {
 	
 	public List<Activity> findActivities(Map<String, String> params);
 	
-	public Activity get(String id);
+	public Activity findById(String id);
 	
 	public Activity create(ActivityForm activity);
 	

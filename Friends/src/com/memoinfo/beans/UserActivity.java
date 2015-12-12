@@ -7,28 +7,28 @@ public class UserActivity extends BaseBean {
 	 */
 	private static final long serialVersionUID = 8186840319402770617L;
 
-	private User user;
+	private String user;
 	
-	private Activity activity;
+	private String activity;
 	
 	/**
 	 * 0:invalid, 1:valid
 	 */
 	private int status;
 
-	public User getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
-	public Activity getActivity() {
+	public String getActivity() {
 		return activity;
 	}
 
-	public void setActivity(Activity activity) {
+	public void setActivity(String activity) {
 		this.activity = activity;
 	}
 

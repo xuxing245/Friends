@@ -14,7 +14,7 @@ import com.memoinfo.beans.User;
 import com.memoinfo.common.Constants;
 import com.memoinfo.common.WeixinAPI;
 import com.memoinfo.form.UserForm;
-import com.memoinfo.service.LoginService;
+import com.memoinfo.service.UserService;
 import com.memoinfo.weixin.AccessToken;
 import com.memoinfo.weixin.WeixinHttpUtil;
 
@@ -25,7 +25,7 @@ public class LoginController {
 	public static final Logger LOG = Logger.getLogger(LoginController.class);
 	
 	@Autowired
-	private LoginService loginService;
+	private UserService userService;
 	
 	@Autowired
 	private WeixinAPI weixinAPI;
@@ -34,13 +34,12 @@ public class LoginController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String login(HttpServletRequest request, UserForm userForm){
-		User user = loginService.getUserForLogin(userForm);
+		User user = userService.getUserForLogin(userForm);
 		if (user != null) {
 			request.getSession().setAttribute(Constants.SESSION_USER, user);
 			return "redirect:/home?login=success";
-		} else {
-			return "redirect:/login/show";
 		}
+		return "redirect:/login/show";
 	}
 	
 	@RequestMapping(value="/show")
@@ -51,13 +50,12 @@ public class LoginController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String register(HttpServletRequest request, UserForm userForm) {
-		User user = loginService.register(userForm);
+		User user = userService.register(userForm);
 		if (user != null) {
 			request.getSession().setAttribute(Constants.SESSION_USER, user);
 			return "redirect:/home?register=success";
-		} else {
-			return "redirect:/login/register/show";
 		}
+		return "redirect:/login/register/show";
 	}
 	
 	@RequestMapping(value="/register/show")
@@ -74,7 +72,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/bindUser/bind")
 	public String bindUser(HttpServletRequest request) {
-		boolean success = true;
 		String code = request.getParameter("code");
 		if (StringUtils.isNotEmpty(code)) {
 			try {
@@ -84,31 +81,22 @@ public class LoginController {
 					UserForm userForm = new UserForm();
 					userForm.setOpenId(accessToken.getOpenid());
 					// get user by openid
-					User user = loginService.getUserForLogin(userForm);
+					User user = userService.getUserForLogin(userForm);
 					if (user == null) {
 						//String userInfoJson = WeixinHttpUtil.get(WeixinHttpUtil.getHTTPSClient(), weixinAPI.getUrlUserInfo(accessToken.getAccess_token(), accessToken.getOpenid()));
 						//WeixinUser weixinUser = mapper.readValue(userInfoJson, WeixinUser.class);
 						// create user by openid
-						user = loginService.register(userForm);
+						user = userService.register(userForm);
 					}
 					request.getSession().setAttribute(Constants.SESSION_USER, user);
-				} else {
-					success = false;
-				} 
+					return "redirect:/home?bind=success";
+				}
 			} catch (Exception e) {
-				success = false;
 				LOG.error(e.getMessage());
 			} 
 			
-		} else {
-			success = false;
 		}
-		
-		if (success) {
-			return "redirect:/home?bind=success";
-		} else {
-			return "redirect:/login/show";
-		}
+		return "redirect:/login/show";
 	}
 	
 	@RequestMapping(value="/logout")

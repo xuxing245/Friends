@@ -15,7 +15,7 @@ public class Activity extends BaseBean {
 	
 	private Timestamp startTime;
 	
-	private User creater;
+	private String creater;
 	
 	/**
 	 * 1: valid
@@ -55,19 +55,19 @@ public class Activity extends BaseBean {
 		this.startTime = startTime;
 	}
 
-	public User getCreater() {
+	public String getCreater() {
 		return creater;
 	}
 
-	public void setCreater(User creater) {
+	public void setCreater(String creater) {
 		this.creater = creater;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -102,10 +102,5 @@ public class Activity extends BaseBean {
 	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	
 	
 }

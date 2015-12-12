@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import com.memoinfo.beans.User;
 import com.memoinfo.dao.CommonDao;
 import com.memoinfo.form.UserForm;
-import com.memoinfo.service.LoginService;
+import com.memoinfo.service.UserService;
 import com.memoinfo.weixin.WeixinUser;
 
-@Service(value="loginService")
-public class LoginServiceImpl implements LoginService {
+@Service(value="userService")
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private CommonDao<User> userDao;
@@ -60,6 +60,11 @@ public class LoginServiceImpl implements LoginService {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public User findById(String id) {
+		return userDao.find(id);
 	}
 
 }

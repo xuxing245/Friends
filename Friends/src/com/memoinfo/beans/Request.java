@@ -7,9 +7,9 @@ public class Request extends BaseBean {
 	 */
 	private static final long serialVersionUID = -605102408411524525L;
 
-	private User sender;
+	private String sender;
 	
-	private User receiver;
+	private String receiver;
 	
 	/**
 	 * 0: request phone
@@ -24,19 +24,19 @@ public class Request extends BaseBean {
 	 */
 	private int status;
 
-	public User getSender() {
+	public String getSender() {
 		return sender;
 	}
 
-	public void setSender(User sender) {
+	public void setSender(String sender) {
 		this.sender = sender;
 	}
 
-	public User getReceiver() {
+	public String getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(User receiver) {
+	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
 

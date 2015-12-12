@@ -17,16 +17,15 @@ home page
 
 <c:if test="${loginSuccess }">
 	<h3>登录成功</h3>
-	用户名:${SESSION_USER.name }
-	<a href="/login/logout">注销</a>
 </c:if>
 
 <c:if test="${registerSuccess }">
 	<h3>登录成功</h3>
-	用户名:${SESSION_USER.name }
-	<a href="/login/logout">注销</a>
 </c:if>
 
+用户名:${SESSION_USER.name }
+	<a href="/login/logout">注销</a>
+<br/>
 <a href="/friend/list">朋友列表</a>
 <a href="/activity/list">活动列表</a>
 <a href="#">消息列表</a>

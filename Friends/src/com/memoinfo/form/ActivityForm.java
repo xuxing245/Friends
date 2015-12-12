@@ -4,6 +4,11 @@ public class ActivityForm {
 	
 	private String title;
 	
+	private String description;
+	
+	/**
+	 * format: yyyy-MM-dd HH:mm:ss
+	 */
 	private String startTime;
 	
 	private String addressName;
@@ -13,6 +18,8 @@ public class ActivityForm {
 	private Double longtitude;
 	
 	private Double distance;
+	
+	private String creater;
 
 	public String getTitle() {
 		return title;
@@ -24,6 +31,14 @@ public class ActivityForm {
 
 	public String getStartTime() {
 		return startTime;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setStartTime(String startTime) {
@@ -60,6 +75,14 @@ public class ActivityForm {
 
 	public void setDistance(Double distance) {
 		this.distance = distance;
+	}
+
+	public String getCreater() {
+		return creater;
+	}
+
+	public void setCreater(String creater) {
+		this.creater = creater;
 	}
 
 }
