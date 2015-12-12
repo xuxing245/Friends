@@ -1,11 +1,15 @@
 package com.memoinfo.service.impl;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.memoinfo.beans.Activity;
+import com.memoinfo.beans.UserActivity;
 import com.memoinfo.common.Constants;
 import com.memoinfo.dao.CommonDao;
 import com.memoinfo.form.ActivityForm;
@@ -16,6 +20,9 @@ public class ActivityServiceImpl implements ActivityService {
 
 	@Autowired
 	private CommonDao<Activity> activityDao;
+	
+	@Autowired
+	private CommonDao<UserActivity> userActivityDao;
 	
 	@Override
 	public List<Activity> findActivities(Map<String, String> params) {
@@ -55,21 +62,22 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 
 	@Override
-	public Boolean isJoined(String activityId, String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean isJoined(UserActivity ua) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("user", ua.getUser());
+		params.put("activity", ua.getActivity());
+		List<UserActivity> list = userActivityDao.find(params);
+		return (list==null || list.isEmpty()) ? false : true;
 	}
 
 	@Override
-	public void join(String activityId, String userId) {
-		// TODO Auto-generated method stub
-
+	public void join(UserActivity ua) {
+		userActivityDao.add(ua);
 	}
 
 	@Override
-	public void quit(String activity, String userId) {
-		// TODO Auto-generated method stub
-
+	public void quit(UserActivity ua) {
+		userActivityDao.delete(ua);
 	}
 
 }

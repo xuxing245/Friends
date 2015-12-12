@@ -15,14 +15,14 @@ public class Request extends BaseBean {
 	 * 0: request phone
 	 * 1: request weixin
 	 */
-	private int type;
+	private Integer type;
 	
 	/**
 	 * 0: new
 	 * 1: accepted
 	 * 2: rejected
 	 */
-	private int status;
+	private Integer status;
 
 	public String getSender() {
 		return sender;
@@ -40,19 +40,19 @@ public class Request extends BaseBean {
 		this.receiver = receiver;
 	}
 
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	

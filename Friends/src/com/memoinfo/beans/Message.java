@@ -7,30 +7,31 @@ public class Message extends BaseBean {
 	 */
 	private static final long serialVersionUID = 2702880699376762565L;
 
-	private User sender;
+	private String sender;
 	
-	private User receiver;
+	private String receiver;
 	
 	/**
-	 * 0:user message, 1:system message
+	 * 0: user message
+	 * 1: system message
 	 */
 	private Integer type;
 	
 	private String content;
 
-	public User getSender() {
+	public String getSender() {
 		return sender;
 	}
 
-	public void setSender(User sender) {
+	public void setSender(String sender) {
 		this.sender = sender;
 	}
 
-	public User getReceiver() {
+	public String getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(User receiver) {
+	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
 

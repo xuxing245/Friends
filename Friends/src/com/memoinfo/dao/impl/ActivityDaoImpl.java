@@ -80,4 +80,10 @@ public class ActivityDaoImpl implements CommonDao<Activity> {
 		return dbUtilsTemplate.find(Activity.class, SQL_FINDALL);
 	}
 
+	@Override
+	public int delete(Activity t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

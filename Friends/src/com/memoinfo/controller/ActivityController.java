@@ -3,17 +3,15 @@ package com.memoinfo.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.memoinfo.beans.Activity;
 import com.memoinfo.beans.User;
+import com.memoinfo.beans.UserActivity;
 import com.memoinfo.common.Constants;
 import com.memoinfo.form.ActivityForm;
 import com.memoinfo.service.ActivityService;
@@ -24,7 +22,7 @@ public class ActivityController {
 	
 	@Autowired
 	private ActivityService activityService;
-
+	
 	@RequestMapping(value="/list")
 	public String list(HttpServletRequest request) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -35,10 +33,13 @@ public class ActivityController {
 	
 	@RequestMapping(value="/detail")
 	public String detail(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		if (StringUtils.isNotEmpty(id)) {
-			Activity act = activityService.findById(id);
+		String activityId = request.getParameter("id");
+		User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
+		if (StringUtils.isNotEmpty(activityId)) {
+			Activity act = activityService.findById(activityId);
+			boolean joined = activityService.isJoined(new UserActivity(user.getId(), activityId));
 			request.setAttribute("activity", act);
+			request.setAttribute("joined", joined);
 		}
 		return "activity/viewActivity";
 	}
@@ -68,21 +69,27 @@ public class ActivityController {
 				activityService.cancel(id);
 			}
 		}
-		return "redirect:/activity/detail?id=" + id;
+		return "redirect:/activity/list";
 	}
 	
 	@RequestMapping(value="/join")
 	public String join(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		
-		return "redirect:viewActivity?id=" + id;
+		String activityId = request.getParameter("id");
+		User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
+		if (StringUtils.isNotEmpty(activityId)) {
+			activityService.join(new UserActivity(user.getId(), activityId));
+		}
+		return "redirect:/activity/detail?id=" + activityId;
 	}
 	
 	@RequestMapping(value="/quit")
 	public String quit(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		
-		return "redirect:viewActivity?id=" + id;
+		String activityId = request.getParameter("id");
+		User user = (User) request.getSession().getAttribute(Constants.SESSION_USER);
+		if (StringUtils.isNotEmpty(activityId)) {
+			activityService.quit(new UserActivity(user.getId(), activityId));
+		}
+		return "redirect:/activity/detail?id=" + activityId;
 	}
 	
 }

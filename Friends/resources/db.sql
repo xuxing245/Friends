@@ -1,4 +1,4 @@
-CREATE TABLE `user` (
+CREATE TABLE `friends`.`user` (
   `id` varchar(255) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `pwd` varchar(255) DEFAULT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `activity` (
+CREATE TABLE `friends`.`activity` (
   `id` VARCHAR(255) NOT NULL,
   `title` VARCHAR(255) NULL,
   `description` VARCHAR(255) NULL,
@@ -21,4 +21,11 @@ CREATE TABLE `activity` (
   `addressName` VARCHAR(255) NULL,
   `latitude` DOUBLE NULL,
   `longtitude` DOUBLE NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `friends`.`useractivity` (
+  `id` VARCHAR(255) NOT NULL,
+  `user` VARCHAR(255) NULL,
+  `activity` VARCHAR(255) NULL,
+  `createDate` DATETIME NULL,
   PRIMARY KEY (`id`));

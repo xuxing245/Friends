@@ -13,4 +13,6 @@ public interface CommonDao<T> {
 	public T find(String id);
 	
 	public List<T> find(Map<String, String> params);
+	
+	public int delete(T t);
 }

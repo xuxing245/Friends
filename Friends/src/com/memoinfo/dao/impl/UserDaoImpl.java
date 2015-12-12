@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.memoinfo.beans.Activity;
 import com.memoinfo.beans.User;
 import com.memoinfo.common.Constants;
 import com.memoinfo.dao.CommonDao;
@@ -88,6 +87,12 @@ public class UserDaoImpl implements CommonDao<User> {
 
 	public void setDbUtilsTemplate(DbUtilsTemplate dbUtilsTemplate) {
 		this.dbUtilsTemplate = dbUtilsTemplate;
+	}
+
+	@Override
+	public int delete(User t) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

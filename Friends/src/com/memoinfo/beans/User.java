@@ -11,18 +11,18 @@ public class User extends BaseBean {
 	
 	private String pwd;
 	
-	private int status;
+	private Integer status;
 	
 	private String openId;
 	
 	private String nickName;
 	
-	private int age;
+	private Integer age;
 	
 	/**
 	 * 0: 女， 1:男
 	 */
-	private int gender;
+	private Integer gender;
 	
 	private String phone;
 	
@@ -33,7 +33,7 @@ public class User extends BaseBean {
 	/*
 	 * 信誉分
 	 */
-	private int score;
+	private Integer score;
 	
 	private String headerImage;
 	
@@ -61,11 +61,11 @@ public class User extends BaseBean {
 		this.pwd = pwd;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -85,19 +85,19 @@ public class User extends BaseBean {
 		this.nickName = nickName;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
-	public int getGender() {
+	public Integer getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 
@@ -125,11 +125,11 @@ public class User extends BaseBean {
 		this.description = description;
 	}
 
-	public int getScore() {
+	public Integer getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(Integer score) {
 		this.score = score;
 	}
 

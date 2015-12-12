@@ -11,10 +11,16 @@ public class UserActivity extends BaseBean {
 	
 	private String activity;
 	
-	/**
-	 * 0:invalid, 1:valid
-	 */
-	private int status;
+	public UserActivity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserActivity(String user, String activity) {
+		super();
+		this.user = user;
+		this.activity = activity;
+	}
 
 	public String getUser() {
 		return user;
@@ -30,14 +36,6 @@ public class UserActivity extends BaseBean {
 
 	public void setActivity(String activity) {
 		this.activity = activity;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 	
 }

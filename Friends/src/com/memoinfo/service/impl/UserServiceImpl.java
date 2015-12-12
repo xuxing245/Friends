@@ -26,6 +26,9 @@ public class UserServiceImpl implements UserService {
 		} else {
 			request.setName(userForm.getUsername());
 			User user = userDao.find(request);
+			if (user == null) {
+				return null;
+			}
 			String requestPWD = DigestUtils.md5Hex(userForm.getPassword());
 			String userPWD = user.getPwd();
 			if (requestPWD.equals(userPWD)) {

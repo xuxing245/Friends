@@ -2,7 +2,9 @@ package com.memoinfo.service;
 
 import java.util.List;
 import java.util.Map;
+
 import com.memoinfo.beans.Activity;
+import com.memoinfo.beans.UserActivity;
 import com.memoinfo.form.ActivityForm;
 
 public interface ActivityService {
@@ -15,9 +17,9 @@ public interface ActivityService {
 	
 	public void cancel(String id);
 	
-	public Boolean isJoined(String activityId, String userId);
+	public Boolean isJoined(UserActivity ua);
 	
-	public void join(String activityId, String userId);
+	public void join(UserActivity ua);
 	
-	public void quit(String activity, String userId);
+	public void quit(UserActivity ua);
 }
