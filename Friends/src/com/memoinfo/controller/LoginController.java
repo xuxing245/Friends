@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
 import com.memoinfo.beans.User;
 import com.memoinfo.common.Constants;
-import com.memoinfo.common.WeixinAPI;
 import com.memoinfo.form.UserForm;
 import com.memoinfo.service.UserService;
-import com.memoinfo.weixin.AccessToken;
+import com.memoinfo.weixin.WeixinAPI;
 import com.memoinfo.weixin.WeixinHttpUtil;
+import com.memoinfo.weixin.response.AccessToken;
 
 @Controller
 @RequestMapping(value="/login")
@@ -29,8 +29,6 @@ public class LoginController {
 	
 	@Autowired
 	private WeixinAPI weixinAPI;
-	
-	private ObjectMapper mapper = new ObjectMapper();
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String login(HttpServletRequest request, UserForm userForm){
@@ -75,8 +73,8 @@ public class LoginController {
 		String code = request.getParameter("code");
 		if (StringUtils.isNotEmpty(code)) {
 			try {
-				String accessTokenJson = WeixinHttpUtil.get(WeixinHttpUtil.getHTTPSClient(), weixinAPI.getUrlAccessToken(code));
-				AccessToken accessToken = mapper.readValue(accessTokenJson, AccessToken.class);
+				String accessTokenJson = WeixinHttpUtil.get(WeixinHttpUtil.getHTTPSClient(), weixinAPI.getUrlAuthorizeAccessToken(code));
+				AccessToken accessToken = JSON.parseObject(accessTokenJson, AccessToken.class);
 				if (StringUtils.isNotEmpty(accessToken.getOpenid())) {
 					UserForm userForm = new UserForm();
 					userForm.setOpenId(accessToken.getOpenid());

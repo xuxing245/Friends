@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.w3c.dom.Document;
 
-import com.memoinfo.common.WeixinAPI;
+import com.memoinfo.weixin.WeixinAPI;
 
 @Controller
 @RequestMapping(value="/weixin")
@@ -60,8 +60,6 @@ public class WeixinController {
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(in);
-			String toUserName = doc.getElementsByTagName("ToUserName").item(0).getFirstChild().getNodeValue();
-			String fromUserName = doc.getElementsByTagName("FromUserName").item(0).getFirstChild().getNodeValue();
 			String msgType = doc.getElementsByTagName("MsgType").item(0).getFirstChild().getNodeValue();
 			if("text".equals(msgType)){
 				String content = doc.getElementsByTagName("Content").item(0).getFirstChild().getNodeValue();
@@ -74,7 +72,6 @@ public class WeixinController {
 			}else if("event".equals(msgType)){
 				String event = doc.getElementsByTagName("Event").item(0).getFirstChild().getNodeValue();
 				if("CLICK".equals(event)){
-					String commandStr = doc.getElementsByTagName("EventKey").item(0).getFirstChild().getNodeValue();
 					
 					// 接收到微信服务器POST过来的点击菜单信息
 					// Do something

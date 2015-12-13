@@ -1,4 +1,5 @@
-package com.memoinfo.weixin;
+package com.memoinfo.weixin.response;
+
 
 public class AccessToken extends WeixinResponse {
 	private String access_token;

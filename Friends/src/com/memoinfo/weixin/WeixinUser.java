@@ -1,5 +1,7 @@
 package com.memoinfo.weixin;
 
+import com.memoinfo.weixin.response.WeixinResponse;
+
 public class WeixinUser extends WeixinResponse{
 	
 	private String openid;

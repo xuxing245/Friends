@@ -169,7 +169,7 @@ public class DbUtilsTemplate {
      * @param params 参数数组 
      * @return 查询结果 
      */ 
-    @SuppressWarnings("unchecked") 
+    @SuppressWarnings({ "unchecked", "rawtypes" }) 
     public <T> List<T> find(Class<T> entityClass, String sql, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
         List<T> list = new ArrayList<T>(); 
@@ -213,7 +213,7 @@ public class DbUtilsTemplate {
      * @param params 参数数组 
      * @return 对象 
      */ 
-    @SuppressWarnings("unchecked") 
+    @SuppressWarnings({ "unchecked", "rawtypes" }) 
     public <T> T findFirst(Class<T> entityClass, String sql, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
         Object object = null; 
@@ -298,7 +298,8 @@ public class DbUtilsTemplate {
      * @param params 参数数组 
      * @return 结果对象 
      */ 
-    public Object findBy(String sql, String columnName, Object[] params) { 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public Object findBy(String sql, String columnName, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
         Object object = null; 
         try { 
@@ -341,7 +342,8 @@ public class DbUtilsTemplate {
      * @param params 参数数组 
      * @return 结果对象 
      */ 
-    public Object findBy(String sql, int columnIndex, Object[] params) { 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public Object findBy(String sql, int columnIndex, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
         Object object = null; 
         try { 

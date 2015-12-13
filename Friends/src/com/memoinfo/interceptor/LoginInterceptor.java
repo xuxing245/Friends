@@ -9,7 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.memoinfo.common.Constants;
-import com.memoinfo.common.WeixinAPI;
+import com.memoinfo.weixin.WeixinAPI;
 
 public class LoginInterceptor implements HandlerInterceptor {
 	
@@ -45,7 +45,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			
 			return true;
 		} else {
-			//response.sendRedirect(wexinAPI.getUrlAccessCode());
+			//response.sendRedirect(wexinAPI.getUrlAuthorizeAccessCode());
 			response.sendRedirect("/login/show");
 		}
 		return false;

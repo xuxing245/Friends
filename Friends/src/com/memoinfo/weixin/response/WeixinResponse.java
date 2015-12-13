@@ -1,4 +1,4 @@
-package com.memoinfo.weixin;
+package com.memoinfo.weixin.response;
 
 public class WeixinResponse {
 	private String errcode;

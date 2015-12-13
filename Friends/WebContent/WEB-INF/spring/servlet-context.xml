@@ -76,5 +76,5 @@
 	</bean>
 
 	<!-- 微信API -->
-	<bean id="weixinAPI" class="com.memoinfo.common.WeixinAPI"></bean>
+	<bean id="weixinAPI" class="com.memoinfo.weixin.WeixinAPI"></bean>
 </beans>

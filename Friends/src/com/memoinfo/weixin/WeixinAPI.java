@@ -1,4 +1,4 @@
-package com.memoinfo.common;
+package com.memoinfo.weixin;
 
 import java.net.URLEncoder;
 
@@ -17,9 +17,13 @@ public class WeixinAPI {
 	@Value("${weixin.token}")
 	private String token;
 	
-	private String urlAccessCode;
+	private String urlAuthorizeAccessCode;
+	
+	private String urlAuthorizeAccessToken;
 	
 	private String urlAccessToken;
+	
+	private String urlJSApiTicket;
 	
 	private String urlUserInfo;
 
@@ -56,34 +60,34 @@ public class WeixinAPI {
 	}
 
 	@SuppressWarnings("deprecation")
-	public String getUrlAccessCode() {
-		urlAccessCode = "https://open.weixin.qq.com/connect/oauth2/authorize"
+	public String getUrlAuthorizeAccessCode() {
+		urlAuthorizeAccessCode = "https://open.weixin.qq.com/connect/oauth2/authorize"
 				+ "?appid=" + appid
 				+ "&redirect_uri=" + URLEncoder.encode(authorizeRedirectUrl)
 				+ "&response_type=code"
 				+ "&scope=snsapi_userinfo"
 				+ "&state=STATE#wechat_redirect";
-		return urlAccessCode;
+		return urlAuthorizeAccessCode;
 	}
 
-	public void setUrlAccessCode(String urlAccessCode) {
-		this.urlAccessCode = urlAccessCode;
+	public void setUrlAuthorizeAccessCode(String urlAccessCode) {
+		this.urlAuthorizeAccessCode = urlAccessCode;
 	}
 
-	public String getUrlAccessToken() {
-		return urlAccessToken;
+	public String getUrlAuthorizeAccessToken() {
+		return urlAuthorizeAccessToken;
 	}
 	
-	public String getUrlAccessToken(String code) {
-		urlAccessToken = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + appid 
+	public String getUrlAuthorizeAccessToken(String code) {
+		urlAuthorizeAccessToken = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + appid 
 							+ "&secret=" + appsecret 
 							+ "&code=" + code 
 							+ "&grant_type=authorization_code";
-		return urlAccessToken;
+		return urlAuthorizeAccessToken;
 	}
 
-	public void setUrlAccessToken(String urlAccessToken) {
-		this.urlAccessToken = urlAccessToken;
+	public void setUrlAuthorizeAccessToken(String urlAccessToken) {
+		this.urlAuthorizeAccessToken = urlAccessToken;
 	}
 	
 	public String getUrlUserInfo() {
@@ -101,6 +105,29 @@ public class WeixinAPI {
 
 	public void setUrlUserInfo(String urlUserInfo) {
 		this.urlUserInfo = urlUserInfo;
+	}
+
+	public String getUrlAccessToken() {
+		urlAccessToken = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential"
+				+ "&appid=" + appid + "&secret=" + appsecret;
+		return urlAccessToken;
+	}
+
+	public void setUrlAccessToken(String urlAccessToken) {
+		this.urlAccessToken = urlAccessToken;
+	}
+
+	public String getUrlJSApiTicket() {
+		return urlJSApiTicket;
+	}
+	
+	public String getUrlJSApiTicket(String accessToken) {
+		urlJSApiTicket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + accessToken + "&type=jsap";
+		return urlJSApiTicket;
+	}
+
+	public void setUrlJSApiTicket(String urlJSApiTicket) {
+		this.urlJSApiTicket = urlJSApiTicket;
 	}
 	
 }
