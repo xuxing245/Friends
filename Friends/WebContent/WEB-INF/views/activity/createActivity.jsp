@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../common/head.jsp" %>
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="/js/jweixin-1.0.0.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -8,53 +10,23 @@
 	主题:<input type="text" name="title"/><br/>
 	时间:<input type="text" name="startTime"/><br/>
 	地址:<input type="text" name="addressName"><br>
+	经度:<input type="text" name="latitude"><br>
+	纬度:<input type="text" name="longtitude"><br>
 	<input type="hidden" name="creater" value="${SESSION_USER.id }" />
 	<input type="submit" value="保存">
 </form>
-
 
 <script type="text/javascript">
 
 wx.config({
     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-    appId: '', // 必填，公众号的唯一标识
-    timestamp: , // 必填，生成签名的时间戳
-    nonceStr: '', // 必填，生成签名的随机串
-    signature: '',// 必填，签名，见附录1
+    appId: '${weixin_appid}', // 必填，公众号的唯一标识
+    timestamp: ${weixin_timestamp}, // 必填，生成签名的时间戳
+    nonceStr: '${weixin_noncestr}', // 必填，生成签名的随机串
+    signature: '${weixin_signature}',// 必填，签名，见附录1
     jsApiList: ['checkJsApi',
-					'onMenuShareTimeline',
-					'onMenuShareAppMessage',
-					'onMenuShareQQ',
-					'onMenuShareWeibo',
-					'hideMenuItems',
-					'showMenuItems',
-					'hideAllNonBaseMenuItem',
-					'showAllNonBaseMenuItem',
-					'translateVoice',
-					'startRecord',
-					'stopRecord',
-					'onRecordEnd',
-					'playVoice',
-					'pauseVoice',
-					'stopVoice',
-					'uploadVoice',
-					'downloadVoice',
-					'chooseImage',
-					'previewImage',
-					'uploadImage',
-					'downloadImage',
-					'getNetworkType',
 					'openLocation',
-					'getLocation',
-					'hideOptionMenu',
-					'showOptionMenu',
-					'closeWindow',
-					'scanQRCode',
-					'chooseWXPay',
-					'openProductSpecificView',
-					'addCard',
-					'chooseCard',
-					'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+					'getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 });
 
 wx.ready(function(){
@@ -68,6 +40,10 @@ wx.ready(function(){
 	        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
 	        var speed = res.speed; // 速度，以米/每秒计
 	        var accuracy = res.accuracy; // 位置精度
+	        alert(latitude);
+	        $('form[name=latitude]').val(latitude);
+	        $('form[name=longtitude]').val(longtitude);
+	        
 	    }
 	});
 

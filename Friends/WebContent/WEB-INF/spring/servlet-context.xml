@@ -30,7 +30,7 @@
 
 	<!-- Interceptors -->
 	<mvc:interceptors>
-		<bean class="com.memoinfo.interceptor.LoginInterceptor">
+		<bean class="com.memoinfo.interceptor.BaseInterceptor">
 			<property name="excludePathList">
 				<list>
 					<value>/login</value>
