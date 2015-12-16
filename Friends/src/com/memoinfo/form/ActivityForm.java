@@ -15,7 +15,7 @@ public class ActivityForm {
 	
 	private Double latitude;
 	
-	private Double longtitude;
+	private Double longitude;
 	
 	private Double distance;
 	
@@ -61,12 +61,12 @@ public class ActivityForm {
 		this.latitude = latitude;
 	}
 
-	public Double getLongtitude() {
-		return longtitude;
+	public Double getLongitude() {
+		return longitude;
 	}
 
-	public void setLongtitude(Double longtitude) {
-		this.longtitude = longtitude;
+	public void setLongitude(Double longtitude) {
+		this.longitude = longtitude;
 	}
 
 	public Double getDistance() {

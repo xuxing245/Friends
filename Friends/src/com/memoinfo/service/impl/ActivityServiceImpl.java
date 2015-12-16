@@ -42,7 +42,7 @@ public class ActivityServiceImpl implements ActivityService {
 		request.setStartTime(Timestamp.valueOf(form.getStartTime()));
 		request.setAddressName(form.getAddressName());
 		request.setLatitude(form.getLatitude());
-		request.setLongtitude(form.getLongtitude());
+		request.setLongitude(form.getLongitude());
 		request.setCreater(form.getCreater());
 		
 		int n = activityDao.add(request);

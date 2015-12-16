@@ -19,7 +19,7 @@ public class ActivityDaoImpl implements CommonDao<Activity> {
 	@Autowired
 	private DbUtilsTemplate dbUtilsTemplate;
 	
-	private static final String SQL_ADD = "insert into activity(id, title, description, startTime, addressName, latitude, longtitude, status, createDate, creater) "
+	private static final String SQL_ADD = "insert into activity(id, title, description, startTime, addressName, latitude, longitude, status, createDate, creater) "
 															+ " values(?,?,?,?,?,?,?,?,?,?)";
 	
 	private static final String SQL_FINDBYID = "select * from activity where id=?";
@@ -41,7 +41,7 @@ public class ActivityDaoImpl implements CommonDao<Activity> {
 		p[3] = t.getStartTime();
 		p[4] = t.getAddressName();
 		p[5] = t.getLatitude();
-		p[6] = t.getLongtitude();
+		p[6] = t.getLongitude();
 		p[7] = t.getStatus();
 		p[8] = t.getCreateDate();
 		p[9] = t.getCreater();

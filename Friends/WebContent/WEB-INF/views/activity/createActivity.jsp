@@ -10,8 +10,8 @@
 	主题:<input type="text" name="title"/><br/>
 	时间:<input type="text" name="startTime"/><br/>
 	地址:<input type="text" name="addressName"><br>
-	经度:<input type="text" name="latitude"><br>
-	纬度:<input type="text" name="longtitude"><br>
+	经度:<input type="text" name="latitude" id="latitude"><br>
+	纬度:<input type="text" name="longitude" id="longitude"><br>
 	<input type="hidden" name="creater" value="${SESSION_USER.id }" />
 	<input type="submit" value="保存">
 </form>
@@ -30,18 +30,15 @@ wx.config({
 wx.ready(function(){
 
     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-	alert('hello');
 	wx.getLocation({
-	    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+	    type: 'gcj02', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
 	    success: function (res) {
 	        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
 	        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
 	        var speed = res.speed; // 速度，以米/每秒计
 	        var accuracy = res.accuracy; // 位置精度
-	        alert(latitude);
-	        $('form[name=latitude]').val(latitude);
-	        $('form[name=longtitude]').val(longtitude);
-	        
+	        $('#latitude').val(latitude);
+	        $('#longitude').val(longitude);
 	    }
 	});
 
