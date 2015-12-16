@@ -77,4 +77,8 @@
 
 	<!-- 微信API -->
 	<bean id="weixinAPI" class="com.memoinfo.weixin.WeixinAPI"></bean>
+	
+	<bean id="accessTokenUtil" class="com.memoinfo.weixin.AccessTokenUtil"  scope="singleton">
+	    <property name="weixinAPI" ref="weixinAPI"></property>
+	</bean>
 </beans>

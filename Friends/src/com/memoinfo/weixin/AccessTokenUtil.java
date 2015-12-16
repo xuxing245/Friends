@@ -5,20 +5,19 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.memoinfo.weixin.response.AccessToken;
 import com.memoinfo.weixin.response.JSApiTicket;
 
-@Service(value="accessTokenUtil")
 public class AccessTokenUtil {
+	private static final Logger LOG = Logger.getLogger(AccessTokenUtil.class);
+	
 	private static AccessTokenUtil instance = new AccessTokenUtil();
 	
 	protected final ScheduledExecutorService executorService;
 	
-	@Autowired
 	private WeixinAPI weixinAPI;
 
 	private AccessTokenGetter accessTokenGetter = new AccessTokenGetter();
@@ -31,7 +30,6 @@ public class AccessTokenUtil {
 	
 	private AccessTokenUtil(){
 		executorService = Executors.newScheduledThreadPool(1);
-		this.start();
 	}
 	
 	public static AccessTokenUtil getInstance(){
@@ -46,6 +44,12 @@ public class AccessTokenUtil {
 		return accessTokenGetter.getJsApiTicket();
 	}
 	
+	public void setWeixinAPI(WeixinAPI weixinAPI) {
+		this.weixinAPI = weixinAPI;
+		
+		this.start();
+	}
+
 	private static class AccessTokenGetter implements Runnable{
 		private WeixinAPI weixinAPI;
 		
@@ -65,6 +69,7 @@ public class AccessTokenUtil {
 				JSApiTicket ticket = JSON.parseObject(jsTicketJSONStr, JSApiTicket.class);
 				jsApiTicket = ticket.getTicket();
 			} catch (Exception e) {
+				LOG.error("error at get access token", e);
 			}
 		}
 		

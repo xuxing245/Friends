@@ -122,7 +122,7 @@ public class WeixinAPI {
 	}
 	
 	public String getUrlJSApiTicket(String accessToken) {
-		urlJSApiTicket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + accessToken + "&type=jsap";
+		urlJSApiTicket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + accessToken + "&type=jsapi";
 		return urlJSApiTicket;
 	}
 

@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +41,10 @@ public class BaseInterceptor implements HandlerInterceptor {
 		String jsticket = accessTokenUtil.getJSApiTicket();
 		String noncestr= Sha1Util.getNonceStr();
 		String timestamp = Sha1Util.getTimeStamp();
-		String url = request.getRequestURL() + "?" + request.getQueryString();
+		String url = request.getRequestURL().toString();
+		if (StringUtils.isNotEmpty(request.getQueryString())) {
+			url += "?" + request.getQueryString();
+		}
 		SortedMap<String, String> signParams = new TreeMap<String, String>();
 		signParams.put("jsapi_ticket", jsticket);
 		signParams.put("noncestr", noncestr);
