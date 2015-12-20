@@ -26,8 +26,12 @@ public class UserDaoImpl implements CommonDao<User> {
 	
 	private static final String SQL_FINDBYID = "select * from user where id=?";
 	
+	private static final String SQL_FINDALL = "select * from user where id<>? and status=?";
+	
 	private static final String SQL_ADD = "insert into user(id, name, pwd, status, openId, createDate) "
 																		+"values(?,?,?,?,?,?)";
+	
+	private static final String SQL_UPDATE = "update user set nickName=?, age=?, gender=?, phone=?, hobbies=?, description=?, addressName=? where id=?";
 	
 	@Override
 	public User find(User user) {
@@ -54,8 +58,10 @@ public class UserDaoImpl implements CommonDao<User> {
 
 	@Override
 	public List<User> find(Map<String, String> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Object[] p = new Object[2];
+		p[0] = params.get("userid");
+		p[1] = Constants.STATUS_VALID;
+		return dbUtilsTemplate.find(User.class, SQL_FINDALL, p);
 	}
 
 	@Override
@@ -76,9 +82,19 @@ public class UserDaoImpl implements CommonDao<User> {
 	}
 
 	@Override
-	public int update(User t) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(User user) {
+		Object[] params = new Object[8];
+		params[0] = user.getNickName();
+		params[1] = user.getAge();
+		params[2] = user.getGender();
+		params[3] = user.getPhone();
+		params[4] = user.getHobbies();
+		params[5] = user.getDescription();
+		params[6] = user.getAddressName();
+		params[7] = user.getId();
+		
+		int n = dbUtilsTemplate.update(SQL_UPDATE, params);
+		return n;
 	}
 
 	public DbUtilsTemplate getDbUtilsTemplate() {

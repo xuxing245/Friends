@@ -1,5 +1,8 @@
 package com.memoinfo.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +72,29 @@ public class UserServiceImpl implements UserService {
 	public User findById(String id) {
 		return userDao.find(id);
 	}
+
+	@Override
+	public void update(UserForm userForm) {
+		
+		User user = new User();
+		user.setId(userForm.getId());
+		user.setNickName(userForm.getNickName());
+		user.setAge(userForm.getAge());
+		user.setGender(userForm.getGender());
+		user.setPhone(userForm.getPhone());
+		user.setHobbies(userForm.getHobbies());
+		user.setDescription(userForm.getDescription());
+		user.setAddressName(userForm.getAddressName());
+		
+		userDao.update(user);
+	}
+
+	@Override
+	public List<User> findAll(Map params) {
+		// TODO Auto-generated method stub
+		return userDao.find(params);
+	}
+	
+	
 
 }
