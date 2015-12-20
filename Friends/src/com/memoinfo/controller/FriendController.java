@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,7 +14,8 @@ import com.memoinfo.beans.User;
 @Controller
 @RequestMapping(value="/friend")
 public class FriendController {
-
+	public static final Logger LOG = Logger.getLogger(FriendController.class);
+	
 	@RequestMapping(value="/list")
 	public String list(HttpServletRequest request) {
 		

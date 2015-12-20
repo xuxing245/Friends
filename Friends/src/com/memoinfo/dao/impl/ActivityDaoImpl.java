@@ -22,9 +22,13 @@ public class ActivityDaoImpl implements CommonDao<Activity> {
 	private static final String SQL_ADD = "insert into activity(id, title, description, startTime, addressName, latitude, longitude, status, createDate, creater) "
 															+ " values(?,?,?,?,?,?,?,?,?,?)";
 	
-	private static final String SQL_FINDBYID = "select * from activity where id=?";
+	private static final String SQL_FINDBYID = "select a.*, ua.userNumber from activity a "
+			+ "left join (SELECT count(*) userNumber, activity FROM friends.useractivity group by activity) ua "
+			+ "on a.id = ua.activity where a.id=?";
 	
-	private static final String SQL_FINDALL = "select * from activity where status=1 order by startTime asc";
+	private static final String SQL_FINDALL = "select a.*, ua.userNumber from activity a "
+			+ "left join (SELECT count(*) userNumber, activity FROM friends.useractivity group by activity) ua "
+			+ "on a.id = ua.activity where a.status=1 order by a.startTime asc";
 	
 	private static final String SQL_UPDATE_STATUS = "update activity set status=? where id=?";
 	

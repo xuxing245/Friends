@@ -8,7 +8,7 @@
 
 <h3>活动列表</h3>
 <c:forEach var="act" items="${activityList }">
-<a href="/activity/detail?id=${act.id }">${act.title}</a>
+<a href="/activity/detail?id=${act.id }">${act.title}</a> 参与人数:${act.userNumber==null?0:act.userNumber }
 <br/>
 </c:forEach>
 </body>

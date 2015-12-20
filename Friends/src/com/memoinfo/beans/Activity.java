@@ -17,6 +17,8 @@ public class Activity extends BaseBean {
 	
 	private String creater;
 	
+	private Integer userNumber;
+	
 	/**
 	 * 1: valid
 	 * 0: invaid
@@ -101,6 +103,14 @@ public class Activity extends BaseBean {
 
 	public void setDistance(Double distance) {
 		this.distance = distance;
+	}
+
+	public Integer getUserNumber() {
+		return userNumber;
+	}
+
+	public void setUserNumber(Integer userNumber) {
+		this.userNumber = userNumber;
 	}
 	
 }

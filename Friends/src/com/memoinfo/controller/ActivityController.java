@@ -3,12 +3,16 @@ package com.memoinfo.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.memoinfo.beans.Activity;
 import com.memoinfo.beans.User;
 import com.memoinfo.beans.UserActivity;
@@ -19,6 +23,8 @@ import com.memoinfo.service.ActivityService;
 @Controller
 @RequestMapping(value="/activity")
 public class ActivityController {
+	
+	public static final Logger LOG = Logger.getLogger(ActivityController.class);
 	
 	@Autowired
 	private ActivityService activityService;
@@ -52,6 +58,7 @@ public class ActivityController {
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(HttpServletRequest request, ActivityForm activityForm) {
+		LOG.info("title: " + activityForm.getTitle());
 		Activity act = activityService.create(activityForm);
 		if (act != null) {
 			return "redirect:/activity/detail?id=" + act.getId();

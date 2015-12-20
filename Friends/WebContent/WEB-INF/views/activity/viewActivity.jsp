@@ -9,11 +9,13 @@
 <a href="/activity/list">列表</a>
 <br/>
 <br/>
-主题:${activity.title }
-时间:${activity.startTime }
-地址:${activity.addressName }
+主题:${activity.title } 
+时间:${activity.startTime } 
+地址:${activity.addressName } 
+参与人数:${activity.userNumber==null?0:activity.userNumber } 
 <input type="hidden" id="latitude" value="${activity.latitude }"/>
 <input type="hidden" id="longitude" value="${activity.longitude }"/>
+<br/><br/>
 <input type="button" value="查看地图" id="showmap" />
 <c:choose>
 	<c:when test="${SESSION_USER.id eq activity.creater }">

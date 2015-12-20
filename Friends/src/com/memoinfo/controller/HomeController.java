@@ -3,11 +3,13 @@ package com.memoinfo.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
+	public static final Logger LOG = Logger.getLogger(HomeController.class);
 	
 	@RequestMapping(value="/")
 	public String main() {
